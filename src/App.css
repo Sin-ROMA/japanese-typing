@@ -1,0 +1,660 @@
+.typing-app {
+  min-height: 100vh;
+  background: #f3efe6;
+  color: #423b32;
+}
+
+.app-header {
+  min-height: 76px;
+  padding: 20px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #fffcf5;
+  border-bottom: 1px solid #d9ceba;
+}
+
+.site-name {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.header-label {
+  color: #756950;
+  font-size: 14px;
+}
+
+.workspace {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-panel,
+.stats-panel,
+.practice-panel {
+  overflow: hidden;
+  background: #fffdf8;
+  border: 1px solid #d6c9b2;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(77, 61, 35, 0.04);
+}
+
+.panel-title {
+  margin: 0;
+  padding: 14px 20px;
+  border-bottom: 1px solid #ded3bf;
+  background: #eee5d4;
+  font-size: 16px;
+  text-align: center;
+}
+
+.profile-panel {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 28px auto 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d5c4a1;
+  border-radius: 24px;
+  background: #f3e7ca;
+  color: #77603b;
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 20px;
+}
+
+.profile-description {
+  margin: 10px 12px 28px;
+  color: #7b7161;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.stats-list {
+  margin: 0;
+  padding: 0 20px;
+}
+
+.stat-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #ebe3d5;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-item dt {
+  margin-bottom: 8px;
+  color: #7b7161;
+  font-size: 14px;
+}
+
+.stat-item dd {
+  margin: 0;
+  color: #506747;
+  font-size: 28px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-item dd span {
+  color: #7b7161;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.sidebar-note {
+  margin: 0;
+  color: #7b7161;
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.practice-panel {
+  min-width: 0;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+.practice-header {
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #eee5d4;
+  border-bottom: 1px solid #ded3bf;
+}
+
+.practice-header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.practice-category {
+  padding: 6px 12px;
+  border: 1px solid #d6c9b2;
+  border-radius: 8px;
+  background: #fffaf0;
+  color: #756950;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.practice-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.practice-guide {
+  margin: 0 0 28px;
+  color: #7b7161;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.sentence-panel {
+  padding: 28px;
+  border: 1px solid #e4dac7;
+  border-radius: 12px;
+  background: #f9f6ee;
+}
+
+.section-label {
+  display: block;
+  color: #7b7161;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sentence-panel h2 {
+  margin: 20px 0 16px;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.sentence-panel p {
+  margin: 0;
+  color: #526a91;
+  font-size: 24px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.answer-panel {
+  margin-top: 32px;
+}
+
+.answer-panel input {
+  width: 100%;
+  margin-top: 12px;
+  padding: 20px;
+  border: 2px solid #d6c9b2;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #423b32;
+  font-size: 22px;
+}
+
+.answer-panel input::placeholder {
+  color: #8a8275;
+}
+
+.answer-panel input:focus {
+  outline: none;
+  border-color: #728663;
+  box-shadow: 0 0 0 4px rgba(114, 134, 99, 0.14);
+}
+
+.answer-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.check-button {
+  padding: 13px 28px;
+  border: none;
+  border-radius: 8px;
+  background: #586f4b;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.check-button:hover {
+  background: #465b3b;
+}
+
+.check-button:focus-visible {
+  outline: 3px solid #586f4b;
+  outline-offset: 4px;
+}
+
+.answer-message {
+  min-height: 28px;
+  margin: 20px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.practice-footer {
+  padding: 16px 28px;
+  border-top: 1px solid #e4dac7;
+  background: #faf7ef;
+  color: #7b7161;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .app-header {
+    padding: 18px 16px;
+  }
+
+  .site-name {
+    font-size: 18px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+    padding: 20px 16px;
+  }
+
+  .sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .sidebar-note {
+    display: none;
+  }
+
+  .profile-avatar {
+    width: 76px;
+    height: 76px;
+    font-size: 40px;
+  }
+
+  .stat-item {
+    padding: 12px 0;
+  }
+
+  .stat-item dd {
+    font-size: 22px;
+  }
+
+  .practice-panel {
+    min-height: auto;
+  }
+
+  .practice-header,
+  .practice-content {
+    padding: 20px;
+  }
+
+  .sentence-panel {
+    padding: 20px;
+  }
+
+  .answer-panel input {
+    font-size: 18px;
+  }
+}
+
+/* 흰색 · 회색 배경 + 보라색 포인트 */
+.typing-app {
+  background: #f5f5f8;
+  color: #30303b;
+}
+
+.app-header {
+  background: #ffffff;
+  border-color: #e5e5ec;
+}
+
+.site-name {
+  color: #6d4bc3;
+}
+
+.profile-panel,
+.stats-panel,
+.practice-panel {
+  background: #ffffff;
+  border-color: #e3e3eb;
+  box-shadow: 0 4px 16px rgba(35, 30, 60, 0.04);
+}
+
+.panel-title,
+.practice-header {
+  background: #f8f8fb;
+  border-color: #e5e5ec;
+}
+
+.profile-avatar {
+  background: #f0eafa;
+  border-color: #e0d5f5;
+  color: #7955c7;
+}
+
+.header-label,
+.profile-description,
+.stat-item dt,
+.stat-item dd span,
+.sidebar-note,
+.practice-guide,
+.section-label {
+  color: #71717f;
+}
+
+.stat-item {
+  border-color: #ededf2;
+}
+
+.stat-item dd {
+  color: #7955c7;
+}
+
+.practice-category {
+  background: #f3eefc;
+  border-color: #e4daf7;
+  color: #704bb8;
+}
+
+.sentence-panel {
+  background: #f8f8fb;
+  border-color: #e7e7ef;
+}
+
+.sentence-panel p {
+  color: #7955c7;
+}
+
+.answer-panel input {
+  background: #ffffff;
+  border-color: #dddde7;
+  color: #30303b;
+}
+
+.answer-panel input::placeholder {
+  color: #858592;
+}
+
+.answer-panel input:focus {
+  border-color: #8b66d5;
+  box-shadow: 0 0 0 4px rgba(139, 102, 213, 0.13);
+}
+
+.check-button {
+  background: #7955c7;
+  color: #ffffff;
+}
+
+.check-button:hover {
+  background: #6845b3;
+}
+
+.check-button:focus-visible {
+  outline-color: #7955c7;
+}
+
+.practice-footer {
+  background: #fafafd;
+  border-color: #e5e5ec;
+  color: #71717f;
+}
+
+/* PC 화면에서 전체 크기를 조금 더 작게 */
+@media (min-width: 761px) {
+  .app-header {
+    min-height: 64px;
+    padding: 16px 28px;
+  }
+
+  .site-name {
+    font-size: 20px;
+  }
+
+  .workspace {
+    max-width: 1200px;
+    padding: 24px;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .sidebar {
+    gap: 16px;
+  }
+
+  .panel-title {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 20px auto 12px;
+    border-radius: 20px;
+    font-size: 42px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+  }
+
+  .profile-description {
+    margin: 8px 10px 20px;
+    font-size: 12px;
+  }
+
+  .stats-list {
+    padding: 0 16px;
+  }
+
+  .stat-item {
+    padding: 14px 0;
+  }
+
+  .stat-item dt {
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .stat-item dd {
+    font-size: 24px;
+  }
+
+  .stat-item dd span,
+  .sidebar-note {
+    font-size: 12px;
+  }
+
+  .practice-panel {
+    min-height: 540px;
+  }
+
+  .practice-header {
+    padding: 16px 24px;
+  }
+
+  .practice-header h1 {
+    font-size: 20px;
+  }
+
+  .practice-category {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .practice-content {
+    padding: 24px;
+  }
+
+  .practice-guide {
+    margin-bottom: 22px;
+    font-size: 13px;
+  }
+
+  .sentence-panel {
+    padding: 22px;
+  }
+
+  .sentence-panel h2 {
+    margin: 16px 0 12px;
+    font-size: 28px;
+  }
+
+  .sentence-panel p {
+    font-size: 21px;
+  }
+
+  .answer-panel {
+    margin-top: 24px;
+  }
+
+  .answer-panel input {
+    margin-top: 10px;
+    padding: 16px;
+    font-size: 20px;
+  }
+
+  .answer-actions {
+    margin-top: 14px;
+  }
+
+  .check-button {
+    padding: 11px 24px;
+    font-size: 14px;
+  }
+
+  .answer-message {
+    min-height: 24px;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+
+  .practice-footer {
+    padding: 13px 24px;
+    font-size: 12px;
+  }
+}
+
+.sentence-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hint-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #71717f;
+  font-size: 13px;
+}
+
+.hint-control select {
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd5ee;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #704bb8;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.hint-control select:focus-visible {
+  outline: 2px solid #7955c7;
+  outline-offset: 2px;
+}
+
+/* 힌트를 꺼도 입력칸의 위치가 크게 움직이지 않도록 해요. */
+.hint-area {
+  min-height: 44px;
+}
+
+.sentence-panel .romaji-hint {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.hint-toggles {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hint-label {
+  margin-right: 4px;
+  color: #71717f;
+  font-size: 13px;
+}
+
+.hint-toggle {
+  padding: 7px 12px;
+  border: 1px solid #dddde7;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #71717f;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.hint-toggle:hover {
+  border-color: #7955c7;
+  background: #f5f0fc;
+}
+
+.hint-toggle[aria-pressed='true'] {
+  border-color: #7955c7;
+  background: #7955c7;
+  color: #ffffff;
+}
+
+.hint-toggle[aria-pressed='true']:hover {
+  background: #6845b3;
+}
+
+.hint-toggle:focus-visible {
+  outline: 2px solid #7955c7;
+  outline-offset: 3px;
+}
+
+.hint-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 44px;
+}
