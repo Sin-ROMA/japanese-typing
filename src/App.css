@@ -658,3 +658,60 @@
   gap: 8px;
   min-height: 44px;
 }
+
+.level-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #eeeaf4;
+  background: #faf9fc;
+}
+
+.level-filter-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #625c70;
+}
+
+.level-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.level-button {
+  min-width: 44px;
+  padding: 7px 12px;
+  border: 1px solid #e2dce9;
+  border-radius: 9px;
+  background: #fff;
+  color: #777080;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.level-button:hover {
+  border-color: #b49adf;
+  background: #f4effb;
+}
+
+.level-button[aria-pressed='true'] {
+  border-color: #8b5cf6;
+  background: #8b5cf6;
+  color: #fff;
+}
+
+.level-button:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+.level-filter-description {
+  margin: 0;
+  font-size: 12px;
+  color: #8a8393;
+}

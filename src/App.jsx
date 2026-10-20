@@ -56,30 +56,44 @@ function calculateTypingStats(input, answers, elapsedMs) {
 }
 
 // 직전 문장을 제외하고 랜덤으로 하나 선택해요.
-function getRandomSentenceIndex(previousIndex = -1) {
-  const total = sentences.length
+function getRandomSentenceIndex(
+  previousIndex = -1,
+  selectedLevels = []
+) {
+  const candidateIndices = []
 
-  if (total <= 1) {
-    return 0
-  }
+  sentences.forEach((sentence, index) => {
+    const matchesLevel =
+      selectedLevels.length === 0 ||
+      selectedLevels.some((level) =>
+        sentence.category.endsWith(level)
+      )
 
-  // 처음 시작할 때는 전체 문장 중에서 선택해요.
-  if (previousIndex < 0 || previousIndex >= total) {
-    return Math.floor(Math.random() * total)
-  }
+    if (matchesLevel) {
+      candidateIndices.push(index)
+    }
+  })
 
-  // 직전 문장을 뺀 나머지 문장 중에서 선택해요.
-  const randomIndex = Math.floor(Math.random() * (total - 1))
+  // 직전과 같은 일본어 문장은 연속해서 나오지 않게 해요.
+  const previousJapanese = sentences[previousIndex]?.japanese
 
-  return randomIndex >= previousIndex
-    ? randomIndex + 1
-    : randomIndex
+  const differentIndices = candidateIndices.filter(
+    (index) => sentences[index].japanese !== previousJapanese
+  )
+
+  const pool =
+    differentIndices.length > 0
+      ? differentIndices
+      : candidateIndices
+
+  return pool[Math.floor(Math.random() * pool.length)]
 }
 
 function App() {
   const [sentenceIndex, setSentenceIndex] = useState(
   () => getRandomSentenceIndex()
 )
+  const [selectedLevels, setSelectedLevels] = useState([])
   const [hints, setHints] = useState({
     japanese: true,
     hiragana: false,
@@ -180,12 +194,42 @@ function App() {
   setMessage('정답이에요! Enter를 누르면 다음 문장으로 넘어가요.')
 }
 
+function handleLevelSelect(level) {
+  let nextLevels
+
+  if (level === 'all') {
+    nextLevels = []
+  } else if (selectedLevels.includes(level)) {
+    nextLevels = selectedLevels.filter(
+      (selectedLevel) => selectedLevel !== level
+    )
+  } else {
+    nextLevels = [...selectedLevels, level]
+  }
+
+  setSelectedLevels(nextLevels)
+
+  setSentenceIndex(
+    getRandomSentenceIndex(sentenceIndex, nextLevels)
+  )
+
+  setInput('')
+  setMessage('')
+  setStartedAt(null)
+  setElapsedMs(0)
+  setIsFinished(false)
+
+  inputRef.current?.focus()
+}
+
   function goToNextSentence() {
   if (!isFinished) {
     return
   }
 
-  setSentenceIndex(getRandomSentenceIndex(sentenceIndex))
+  setSentenceIndex(
+  getRandomSentenceIndex(sentenceIndex, selectedLevels)
+)
 
   setInput('')
   setMessage('')
@@ -286,6 +330,41 @@ function App() {
             {currentSentence.category}
             </span>
           </header>
+
+<section className="level-filter" aria-label="연습 단계 선택">
+  <span className="level-filter-label">연습 단계</span>
+
+  <div
+    className="level-buttons"
+    role="group"
+    aria-label="여러 단계 선택 가능"
+  >
+    <button
+      type="button"
+      className="level-button"
+      aria-pressed={selectedLevels.length === 0}
+      onClick={() => handleLevelSelect('all')}
+    >
+      전체
+    </button>
+
+    {['N5', 'N4', 'N3', 'N2', 'N1'].map((level) => (
+      <button
+        key={level}
+        type="button"
+        className="level-button"
+        aria-pressed={selectedLevels.includes(level)}
+        onClick={() => handleLevelSelect(level)}
+      >
+        {level}
+      </button>
+    ))}
+  </div>
+
+  <p className="level-filter-description">
+    여러 단계를 함께 선택할 수 있어요.
+  </p>
+</section>
 
           <div className="practice-content">
             <p className="practice-guide">
